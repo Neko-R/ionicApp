@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home - All Events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item button *ngFor="let event of (events | async)" [routerLink]="['/', 'event-detail', event.event_public_Id]">
+
+      <ion-card>
+        <img style="max-height: 50vh; overflow: hidden;" src="/assets/flyers/{{event.flyer}}">
+        <ion-card-header>
+          <ion-card-subtitle style="color: rgb(12, 12, 12);">{{ event.title }} </ion-card-subtitle>
+          <ion-card-title color="primary">{{event.name}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-label text-wrap>
+                <h3>{{ event.start_date }}</h3>
+                {{ event.end_date }}
+              </ion-label>
+          <p style="text-align: justify; color: black;">{{event.cost}}</p>
+          <p style="text-align: justify; color: black;">{{event.venue}}</p>
+          <p style="text-align: justify; color: black;">{{event.description}}</p>
+        </ion-card-content>
+      </ion-card>
+
+  
+    </ion-item>
+  
+  </ion-list>
+
+</ion-content>
